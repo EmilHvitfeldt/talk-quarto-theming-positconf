@@ -1,0 +1,528 @@
+---
+format:
+  revealjs: 
+    theme: [default, styles.scss, quarto-is-awesome.css]
+    menu: false
+    width: 1280
+    height: 720
+    include-after-body: 
+      - "all-the-js-code.html"
+echo: true
+code-line-numbers: false
+revealjs-plugins:
+  - codewindow
+  - highlightword
+---
+
+## {background-image="art/waves.svg"}
+
+::: {.title .fragment .fade-out .absolute top="10%"}
+Styling and Templating Quarto Documents 
+:::
+
+::: {.title .fragment .fade-in .absolute top="0"}
+worried about styling taking too much time?
+:::
+
+::: {.subtitle .fragment .fade-in .absolute top="50%" right="0%"}
+In 20 minutes you won't anymore
+:::
+
+::: {.author .absolute bottom="-5%" left="-5%"}
+Emil hvitfeldt @ posit::conf 2023
+:::
+
+## Who are you?
+
+![](art/lighthouse-1.png){.absolute right=-10% bottom=-25%}
+
+::: {.incremental .highlight-last}
+- You are a Quarto user or quarturious
+- Can create documents of various types (because Quarto is awesome)
+- Haven't ventured beyond into styling
+:::
+
+<br>
+
+---
+
+## Imagine
+
+![](art/seagull-01.png){.absolute top=10% left=10% height=300px}
+
+![](art/seagull-03.png){.absolute bottom=0% right=10% height=300px}
+
+
+::: {.absolute right="0%" style="text-align: right;"}
+You are doing
+
+[weekly reports]{.fragment .highlight-yellow}
+
+at work
+:::
+
+::: {.absolute left="0%" top="60%"}
+and the
+
+[higher ups]{.fragment .highlight-yellow}
+
+want you to use the 
+
+[corporate design]{.fragment .highlight-yellow}
+:::
+
+## {.center}
+
+![](art/seagull-05.png){.absolute top=-80% right=10% height=250px}
+
+::: r-fit-text
+styling can be daunting
+
+but it doesn't have to
+:::
+
+## {background-iframe="polygon-mask/index.html"}
+
+<div class="wrapper" style="display: flex; justify-content: center;">
+{{< include quarto-is-awesome.svg >}}
+</div>
+
+::: {.fragment .quartoisawesome}
+:::
+
+<br>
+
+<br>
+
+::: columns
+::: {.column width="25%"}
+I have
+
+the
+
+opposite
+
+problem
+:::
+
+::: {.column width="50%"}
+
+:::
+
+::: {.column width="25%" style="text-align: right; width:25%;"}
+I spend
+
+too much
+
+time
+
+writing slides
+:::
+:::
+
+## The most with little effort
+
+![](art/seagull-04.png){.absolute bottom=-20% right=55% height=250px}
+
+
+::: columns
+::: {.column width="65%"}
+<br> <br>
+you can go far 
+
+with styling using 
+
+minimal changes
+:::
+:::
+
+::: {.absolute left="70%" top="25%"}
+[colors]{.fragment .highlight-pink}
+:::
+
+::: {.absolute left="70%" top="50%"}
+[fonts]{.fragment .fonts style="opacity: 1; visibility: unset;"}
+:::
+
+::: {.absolute left="70%" top="75%"}
+[sizes]{.fragment .sizes style="opacity: 1; visibility: unset;"}
+:::
+
+## How do you write a theme?
+
+![](art/seagull-02.png){.absolute top=10% left=0% height=300px}
+
+![](art/seagull-04.png){.absolute bottom=-20% right=0% height=250px}
+
+
+<br>
+
+::: {style="text-align: right;"}
+It will depend on format
+:::
+
+<br> <br>
+
+::: {style="text-align: center;"}
+latex  - html  - powerpoint  - other?
+:::
+
+<br> <br>
+
+Done differently for different formats
+
+## {.center}
+
+![](art/seagull-04.png){.absolute bottom=-50% left=0% height=250px}
+
+::: r-fit-text
+we are assuming 
+
+that you know 
+
+what you want
+:::
+
+## HTML documents
+
+::: columns
+::: {.column width="50%"}
+::: {.codewindow .quarto}
+index.qmd
+{{< include _example_include.qmd >}}
+:::
+
+:::
+
+::: {.column width="50%"}
+
+::: {.codewindow .html}
+index.html
+<iframe class="slide-deck" src="_example.html" style="width: 100%; height: 484.47px;"></iframe>
+:::
+:::
+:::
+
+## HTML theming - Sass Variables
+
+![](art/seagull-13.png){.absolute bottom=0% right=0% height=250px}
+
+::: {.fragment fragment-index=1 .highlightword word="- styles.scss" style="background:#FED7E1;"}
+:::
+
+::: {.fragment fragment-index=1 .highlightword word="theme:" style="background:#FED7E1;"}
+:::
+
+::: columns
+::: {.column width="50%"}
+
+::: {.codewindow .quarto}
+index.qmd
+{{< include _example_styles_include.qmd >}}
+:::
+
+:::
+
+::: {.column width="50%"}
+::: {.fragment fragment-index=2}
+::: {.codewindow .sass}
+styles.scss
+
+<div>
+/\*\-\- scss:defaults \-\-\*/  
+
+/\*\-\- scss:rules \-\-\*/  
+
+</div>
+:::
+
+Read [More About Quarto Themes](https://quarto.org/docs/output-formats/html-themes-more.html)
+:::
+
+:::
+:::
+
+
+## How to change colors
+
+::: columns
+::: {.column width="50%"}
+::: {.codewindow .sass}
+styles.scss
+
+<div>
+/\*\-\- scss:defaults \-\-\*/  
+[\$theme-black]{.brown}: [#4c4c4c]{style="background-color:black; color:white;"};  
+[\$theme-white]{.brown}: [white]{style="background-color:white;"};  
+[\$theme-teal]{.brown}: [#50847B]{style="background-color:#50847B; color:white;"};  
+[\$theme-blue]{.brown}: [#76AADB]{style="background-color:#76AADB; color:white;"};  
+
+[\$body-bg]{.brown}: $theme-white;   
+[\$body-color]{.brown}: $theme-black;  
+[\$link-color]{.brown}: $theme-teal;  
+$code-color: $theme-teal;  
+
+/\*\-\- scss:rules \-\-\*/  
+h1 {  
+\ \ color: darken($theme-blue, 50%);  
+}  
+
+h2, h3, h4 {  
+\ \ color: $theme-blue;  
+}
+</div>
+:::
+:::
+
+::: {.column width="50%"}
+::: {.codewindow .html}
+index.html
+
+<iframe class="slide-deck" src="_example_colors.html" style="width: 100%; height: 484.47px;"></iframe>
+:::
+:::
+:::
+
+::: footer
+<https://quarto.org/docs/output-formats/html-themes.html#sass-variables>
+:::
+
+## How to change fonts
+
+::: columns
+::: {.column width="50%"}
+::: {.codewindow .sass}
+styles.scss
+
+<div style="width: 100%; height: 520px; overflow: scroll;">
+/\*\-\- scss:defaults \-\-\*/  
+[\$theme-black]{.brown}: [#4c4c4c]{style="background-color:black; color:white;"};  
+[\$theme-white]{.brown}: [white]{style="background-color:white;"};  
+[\$theme-teal]{.brown}: [#50847B]{style="background-color:#50847B; color:white;"};  
+[\$theme-blue]{.brown}: [#76AADB]{style="background-color:#76AADB; color:white;"};  
+
+::: {style="border-top:#FFD571 solid; border-bottom:#FFD571 solid; background:#FFD57155;"}
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;1,400;1,600&display=swap');  
+@import url('https://fonts.googleapis.com/css2?family=Source+Code_Pro&display=swap');
+:::
+
+[\$body-bg]{.brown}: $theme-white;   
+[\$body-color]{.brown}: $theme-black;  
+[\$link-color]{.brown}: $theme-teal;  
+$code-color: $theme-teal;  
+
+::: {style="border-top:#FFD571 solid; border-bottom:#FFD571 solid; background:#FFD57155;"}
+$font-family-sans-serif: 'Montserrat', sans-serif;  
+$font-family-monospace: 'Source Code Pro', monospace;
+:::
+
+/\*\-\- scss:rules \-\-\*/  
+h1 {  
+\ \ color: darken($theme-blue, 50%);  
+}  
+
+h2, h3, h4 {  
+\ \ color: $theme-blue;  
+}
+</div>
+:::
+:::
+
+::: {.column width="50%"}
+::: {.codewindow .html}
+index.html
+
+<iframe class="slide-deck" src="_example_fonts.html" style="width: 100%; height: 484.47px;"></iframe>
+:::
+:::
+:::
+
+## How to change sizes
+
+::: columns
+::: {.column width="50%"}
+::: {.codewindow .sass}
+styles.scss
+
+<div style="width: 100%; height: 520px; overflow: scroll;">
+/\*\-\- scss:defaults \-\-\*/  
+[\$theme-black]{.brown}: [#4c4c4c]{style="background-color:black; color:white;"};  
+[\$theme-white]{.brown}: [white]{style="background-color:white;"};  
+[\$theme-teal]{.brown}: [#50847B]{style="background-color:#50847B; color:white;"};  
+[\$theme-blue]{.brown}: [#76AADB]{style="background-color:#76AADB; color:white;"};  
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;1,400;1,600&display=swap');  
+@import url('https://fonts.googleapis.com/css2?family=Source+Code_Pro&display=swap');
+
+::: {style="border-top:#FFD571 solid; border-bottom:#FFD571 solid; background:#FFD57155;"}
+$font-size-root: 20px;  
+$h1-font-size: $font-size-root * 3;
+:::
+
+[\$body-bg]{.brown}: $theme-white;   
+[\$body-color]{.brown}: $theme-black;  
+[\$link-color]{.brown}: $theme-teal;  
+$code-color: $theme-teal;  
+
+$font-family-sans-serif: 'Montserrat', sans-serif;  
+$font-family-monospace: 'Source Code Pro', monospace;
+
+::: {style="border-top:#FFD571 solid; border-bottom:#FFD571 solid; background:#FFD57155;"}
+pre, pre.sourceCode {  
+  font-size: 1.175em;  
+}
+:::
+
+/\*\-\- scss:rules \-\-\*/  
+h1 {  
+\ \ color: darken($theme-blue, 50%);  
+}  
+
+h2, h3, h4 {  
+\ \ color: $theme-blue;  
+}
+</div>
+:::
+:::
+
+::: {.column width="50%"}
+::: {.codewindow .html}
+index.html
+
+<iframe class="slide-deck" src="_example_sizes.html" style="width: 100%; height: 484.47px;"></iframe>
+:::
+:::
+:::
+
+## ✨✨ Difference ✨✨ {.center-title}
+
+::: columns
+::: {.column width="50%"}
+::: {.codewindow .html}
+index.html
+
+<iframe class="slide-deck" src="_example.html" style="width: 100%; height: 484.47px;"></iframe>
+:::
+:::
+
+::: {.column width="50%"}
+::: {.codewindow .html}
+index.html
+
+<iframe class="slide-deck" src="_example_sizes.html" style="width: 100%; height: 484.47px;"></iframe>
+:::
+:::
+:::
+
+# You did it! {.center-title background-iframe="multiple-images/index.html"}
+
+## Quarto Templates
+
+![](art/seagull-14.png){.absolute bottom=0% right=0% height=250px}
+
+<br>
+
+::: columns
+::: {.column width="60%"}
+![](drob.png)
+:::
+
+::: {.column .fragment width="40%"}
+<br>
+
+When you need the same styling 3 times, write a Quarto Template
+:::
+:::
+
+::: footer
+<https://quarto.org/docs/extensions/starter-templates.html>
+:::
+
+## Creating a Template
+
+::: columns
+::: {.column width="50%"}
+::: {.fragment fragment-index=1}
+Create Github repository
+:::
+
+<br>
+
+::: {.fragment fragment-index=2}
+Rename file `template.qmd`
+:::
+
+<br>
+
+::: {.fragment fragment-index=4}
+hidden files not copied
+:::
+
+::: {.fragment fragment-index=5}
+use `.quartoignore`
+:::
+
+
+:::
+
+::: {.column width="50%"}
+
+::: {.fragment fragment-index=1}
+
+::: codewindow
+zsh
+
+::: {.bash style="font-size:1.6em;"}
+corp-theme-html/  
+├── [.Rhistory]{.fragment fragment-index=4 .hide}  
+├── [.Rproj.user/]{.fragment fragment-index=4 .hide}  
+├── [.git/]{.fragment fragment-index=4 .hide}  
+├── [.gitignore]{.fragment fragment-index=4 .hide}  
+├── [corp-theme-html.Rproj]{.fragment fragment-index=5 .hide}  
+├── [index.qmd]{.fragment fragment-index=2 .cross} [template.qmd]{.fragment fragment-index=2 .fade-in}  
+└── styles.scss  
+:::
+:::
+:::
+:::
+:::
+
+::: {.fragment fragment-index=3 style="font-size: 0.9em;"}
+`quarto use template <gh-organization>/<extension>`
+:::
+
+## Make pretty things!
+
+<br>
+
+::: columns
+::: {.column width="60%"}
+
+[quarto.org](https://quarto.org/)
+
+[Github quarto-template](https://github.com/topics/quarto-template)
+
+[Slidecraft 101](https://www.emilhvitfeldt.com/blog#category=slidecraft%20101)
+
+<iframe class="slide-deck" src="earth/index.html" style="width: 100%; height: 350px;"></iframe>
+
+:::
+
+::: {.column width="40%"}
+
+[{{< fa brands github >}} EmilHvitfeldt](https://github.com/emilhvitfeldt)
+
+<br>
+
+[{{< fa brands linkedin >}} EmilHvitfeldt](https://www.linkedin.com/in/emilhvitfeldt/)
+
+<br>
+
+[{{< fa brands mastodon >}} EmilHvitfeldt](https://fosstodon.org/@emilhvitfeldt)
+
+<br>
+
+[<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192" fill="#000" style="height:1em;"><path d="M141.54 88.988a66.667 66.667 0 0 0-2.518-1.143c-1.482-27.307-16.403-42.94-41.457-43.1h-.34c-14.986 0-27.449 6.396-35.12 18.035l13.78 9.452c5.73-8.694 14.723-10.548 21.347-10.548h.23c8.248.054 14.473 2.452 18.502 7.13 2.932 3.405 4.893 8.11 5.864 14.05-7.314-1.244-15.224-1.626-23.68-1.141-23.82 1.372-39.134 15.265-38.105 34.569.522 9.792 5.4 18.216 13.735 23.719 7.047 4.652 16.124 6.927 25.557 6.412 12.458-.683 22.231-5.436 29.05-14.127 5.177-6.6 8.452-15.153 9.898-25.93 5.937 3.583 10.337 8.298 12.767 13.966 4.132 9.635 4.373 25.468-8.546 38.376-11.319 11.308-24.925 16.2-45.488 16.35-22.809-.168-40.06-7.483-51.275-21.741C35.238 139.966 29.811 120.682 29.608 96c.203-24.682 5.63-43.966 16.133-57.317C56.957 24.425 74.207 17.11 97.016 16.94c22.975.17 40.526 7.52 52.171 21.848 5.71 7.025 10.015 15.86 12.853 26.162l16.147-4.308c-3.44-12.68-8.853-23.606-16.219-32.668C147.04 9.608 125.205.195 97.072 0h-.113C68.884.195 47.294 9.643 32.79 28.08 19.884 44.487 13.226 67.316 13.002 95.933v.135c.224 28.616 6.882 51.446 19.788 67.854C47.294 182.359 68.883 191.807 96.96 192h.112c24.96-.173 42.554-6.708 57.048-21.19 18.963-18.944 18.392-42.691 12.142-57.27-4.484-10.453-13.033-18.944-24.723-24.552zm-43.096 40.519c-10.44.588-21.286-4.098-21.821-14.135-.396-7.442 5.296-15.746 22.462-16.735 1.966-.113 3.895-.169 5.79-.169 6.235 0 12.068.606 17.37 1.765-1.977 24.702-13.58 28.713-23.801 29.274z"/></svg> EmilHvitfeldt](https://www.threads.net/@emilhvitfeldt)
+
+:::
+:::

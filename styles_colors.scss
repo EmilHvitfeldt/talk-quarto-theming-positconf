@@ -1,0 +1,20 @@
+/*-- scss:defaults --*/
+$theme-black: #4c4c4c;
+$theme-white: white;
+$theme-teal: #50847B;
+$theme-blue: #76AADB;
+
+$body-bg: $theme-white;
+$body-color: $theme-black;
+$link-color: $theme-teal;
+$code-color: $theme-teal;
+
+/*-- scss:rules --*/
+
+h1 {
+  color: darken($theme-blue, 35%);
+}
+
+h2, h3, h4 {
+  color: $theme-blue;
+}

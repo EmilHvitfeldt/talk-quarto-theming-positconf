@@ -1,0 +1,30 @@
+<script type="text/javascript">
+Reveal.on( 'fragmentshown', event => {
+  if (event.fragment.classList.contains("quartoisawesome")) {
+    document.querySelector('.wrapper svg').classList.add('active')
+  }
+
+  if (event.fragment.classList.contains("sizes")) {
+    event.fragment.style.fontSize = "2em";
+  }
+
+  if (event.fragment.classList.contains("fonts")) {
+    event.fragment.style.fontFamily = "Moon Dance";
+    event.fragment.style.fontSize = "2em";
+  }
+} );
+Reveal.on( 'fragmenthidden', event => {
+  if (event.fragment.classList.contains("quartoisawesome")) {
+    document.querySelector('.wrapper svg').classList.remove('active')
+  }
+
+  if (event.fragment.classList.contains("sizes")) {
+    event.fragment.style.fontSize = "1em";
+  }
+
+  if (event.fragment.classList.contains("fonts")) {
+    event.fragment.style.fontFamily = "Happy Monkey";
+    event.fragment.style.fontSize = "1em";
+  }
+} );
+</script>

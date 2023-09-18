@@ -1,0 +1,142 @@
+/*-- scss:defaults --*/
+@import url('https://fonts.googleapis.com/css2?family=Source+Code_Pro&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Happy+Monkey&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Moon+Dance&display=swap');
+
+$font-family-sans-serif: "Happy Monkey";
+$font-family-monospace: 'Source Code Pro', monospace;
+
+$theme-purple: #BF65C5;
+$theme-blue: #0064c3;
+$theme-teal: #50847B;
+$theme-cream: #F5F5F5;
+$theme-dark-purple: #1A1626;
+
+$theme-yellow: #FFD571;
+$theme-brown: #a37100;
+$theme-pink: #FED7E1;
+
+$theme-white: #FFFFFF;
+$theme-black: #000000;
+
+$body-bg: $theme-white;
+$body-color: black;
+$link-color: lighten($theme-dark-purple, 0.5);
+$selection-bg: $theme-blue;
+
+$presentation-font-size-root: 46px;
+
+/*-- scss:rules --*/
+
+.reveal {
+  background: linear-gradient(0deg, rgba(186,228,255,1) 0%, rgba(255,255,255,1) 79%, rgba(255,252,230,1) 100%);
+}
+
+@font-face {
+    font-family: 'EmbraceTheBlush';
+    src: url("../../../../../Embrace The Blush.otf") format("opentype");
+}
+
+.title {
+  font-family: embracetheblush;
+  text-align: center;
+  font-size: 100px;
+}
+
+.subtitle {
+  text-align: right;
+}
+
+.author {
+  color: $theme-white;
+}
+
+.highlight-last .current-fragment {
+  color: #0064c3;
+}
+
+.blue {
+  color: #0064c3;
+}
+
+.reveal .slide ul li {
+  margin-bottom: 100px !important;
+}
+
+.reveal a {
+  text-decoration: underline;
+}
+
+// fragment highlight colors --------------------------------------------------
+.reveal .slides section {
+  .fragment.highlight-blue,
+  .fragment.highlight-yellow,
+  .fragment.highlight-pink,
+  .fragment.highlight-teal {
+    opacity: 1;
+    visibility: inherit
+  }
+
+  .fragment.highlight-teal.visible {
+    background-color: $theme-teal;
+  }
+  .fragment.highlight-blue.visible {
+    background-color: rgba($theme-blue, 0.2);
+    color: $theme-black;
+    border-radius: 15px;
+    padding: 10px;
+  }
+  .fragment.highlight-yellow.visible {
+    background-color: rgba($theme-yellow, 0.6);
+    color: $theme-black;
+    border-radius: 15px;
+    padding: 10px;
+  }
+  .fragment.highlight-pink.visible {
+    background-color: $theme-pink;
+    color: $theme-black;
+    border-radius: 15px;
+    padding: 10px;
+  }
+
+  .fragment.cross {
+    opacity: 1;
+    visibility: inherit
+  }
+  .fragment.cross.visible {
+    text-decoration-line: line-through;
+    text-decoration-color: #f87676;
+    text-decoration-thickness: 5px;
+  }
+
+  .fragment.hide {
+    opacity: 1;
+    visibility: inherit
+  }
+  .fragment.hide.visible {
+    color: #aaaaaa;
+  }
+
+
+}
+
+.background-teal {
+  background-color: $theme-teal;
+}
+.background-blue {
+  background-color: $theme-blue;
+}
+.background-yellow {
+  background-color: $theme-yellow;
+}
+.background-pink {
+  background-color: $theme-pink;
+}
+
+.codewindow .textarea .sourceCode {
+  text-wrap: balance;
+}
+
+.center-title h1,h2 {
+  text-align: center;
+}

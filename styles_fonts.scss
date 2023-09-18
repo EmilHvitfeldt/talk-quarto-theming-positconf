@@ -1,0 +1,26 @@
+/*-- scss:defaults --*/
+$theme-black: #4c4c4c;
+$theme-white: white;
+$theme-teal: #50847B;
+$theme-blue: #76AADB;
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;1,400;1,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Code_Pro&display=swap');
+
+$body-bg: $theme-white;
+$body-color: $theme-black;
+$link-color: $theme-teal;
+$code-color: $theme-teal;
+
+$font-family-sans-serif: 'Montserrat', sans-serif;
+$font-family-monospace: 'Source Code Pro', monospace;
+
+/*-- scss:rules --*/
+
+h1 {
+  color: darken($theme-blue, 35%);
+}
+
+h2, h3, h4 {
+  color: $theme-blue;
+}
